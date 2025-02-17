@@ -60,14 +60,11 @@ class Vehicle {
     // Methods
 
     public function detect(): string {
-        switch ($this->wheels) {
-            case 2:
-                return "bike";
-            case 4:
-                return "car";
-            default:
-                return "Unidentified";
-        }
+        return match ($this->wheels) {
+            2       => "bike",
+            4       => "car",
+            default => "Unidentified"
+        };
     }
 
     public function boost(int $boost = 50): Vehicle {
