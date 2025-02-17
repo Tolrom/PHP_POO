@@ -54,5 +54,15 @@ $vehicle2 = new Vehicle("Honda CBR", 2, "red", "Yoann", 280);
     <?= 
     gettype($vehicle1->faster($vehicle2)) == "string" ? 
     $vehicle1->faster($vehicle2) : 
-    $vehicle1->faster($vehicle2)->getName() ?>
+    $vehicle1->faster($vehicle2)->getName() . " is the fastest." ?>
+</p>
+<h5>Boosting...</h5>
+<h5>Speed comparison...</h5>
+<p> 
+    The
+    <?php
+    $vehicle2->boost();
+    echo gettype($vehicle1->faster($vehicle2)) == "string" ? 
+    $vehicle1->faster($vehicle2) : 
+    $vehicle1->faster($vehicle2)->getName() . " is the fastest."; ?>
 </p>

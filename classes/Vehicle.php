@@ -60,7 +60,7 @@ class Vehicle {
     // Methods
 
     public function detect(): string {
-        return match ($this->wheels) {
+        return match ($this->getWheels()) {
             2       => "bike",
             4       => "car",
             default => "Unidentified"
@@ -68,16 +68,16 @@ class Vehicle {
     }
 
     public function boost(int $boost = 50): Vehicle {
-        $this->maxSpeed += $boost;
+        $this->setMaxSpeed($this->getMaxSpeed() + $boost);
         return $this;
     }
 
     public function faster(Vehicle $vehicle): Vehicle | string {
         $diff = $this->getMaxSpeed() - $vehicle->getMaxSpeed();
-        return match ($diff) {
+        return match (true) {
             $diff > 0 => $this,
             $diff < 0 => $vehicle,
-            $diff = 0 => 'Vehicles are equally fast'
+            $diff == 0 => 'Vehicles are equally fast'
         };
     }
 }
