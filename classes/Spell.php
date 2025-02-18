@@ -19,11 +19,11 @@ class Spell implements WeaponInterface {
     }
 
     
-    protected function display(): void {
-        echo "Spell";
+    public function display(): string {
+        return "Spell";
     }
 
-    protected function attack(): int {
+    public function attack(): int {
         $dmg = rand(4,8);
         return $dmg;
     }

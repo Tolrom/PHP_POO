@@ -13,14 +13,17 @@ class Mage extends AbstractCharacter {
         $this->mana = $mana;
         return $this;
     }
-    protected function display(): void {
-        echo "Mage";
+    public function display(): string {
+        return "Mage";
     }
 
     public function attack(): int {
-        if($this->getWeapon() instanceof Fireball) {
+        if($this->getWeapon() instanceof Spell) {
             $this->setMana($this->getMana() - 1);
+            echo $this->getName()." the ".$this->getType()." spent 1 mana.<br> ";
+            echo $this->getMana()." mana left. <br>";
         }
+        echo $this->getName()." the ".$this->getType()." dealt ".$this->getWeapon()->attack(). " damage with the ".$this->getWeapon()->display().".<br>";
         return $this->getWeapon()->attack();
     }
 }

@@ -28,11 +28,11 @@ class Bow implements WeaponInterface {
     }
 
     
-    protected function display(): void {
-        echo "Bow";
+    public function display(): string {
+        return "Bow";
     }
 
-    protected function attack(): int {
+    public function attack(): int {
         if ($this->getAmmo() > 0) {
             $dmg = rand(1,10);
             $this->setAmmo($this->getAmmo() - 1);

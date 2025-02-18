@@ -1,5 +1,6 @@
 <?php
-include "./WeaponInterface.php";
+require "WeaponInterface.php";
+
 abstract class AbstractCharacter implements WeaponInterface {
 
     // Properties
@@ -40,7 +41,7 @@ abstract class AbstractCharacter implements WeaponInterface {
 
     // Methods
 
-    abstract protected function display(): void;
+    abstract public function display(): string;
     abstract public function attack(): int;
 
 }

@@ -28,11 +28,11 @@ class Sword implements WeaponInterface {
     }
 
     
-    protected function display(): void {
-        echo "Sword";
+    public function display(): string {
+        return "Sword";
     }
 
-    protected function attack(): int {
+    public function attack(): int {
         $dmg = rand(1,10);
         if (rand(0, 100) <= 10){
             $this->setDurability($this->getDurability() -1);
