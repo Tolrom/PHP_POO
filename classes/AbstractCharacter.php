@@ -44,7 +44,6 @@ abstract class AbstractCharacter implements WeaponInterface {
     abstract public function display(): string;
     public function attack(): int{
         if($this->getWeapon() instanceof Spell) {
-            // var_dump($this);
             if($this->getType() === "Mage"){
                 $this->setMana($this->getMana() - 1);
                 echo $this->getName()." the ".$this->getType()." spent 1 mana.<br> ";
