@@ -7,12 +7,4 @@ class Warrior extends AbstractCharacter {
         return "Warrior";
     }
 
-    public function attack(): int {
-        if($this->getWeapon() instanceof Spell) {
-            echo "Only a mage can cast a spell!<br>";
-            return 0;
-        }
-        echo $this->getName()." the ".$this->getType()." dealt ".$this->getWeapon()->attack(). " damage with the ".$this->getWeapon()->display().".<br>";
-        return $this->getWeapon()->attack();
-    }
 }
