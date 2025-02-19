@@ -150,7 +150,7 @@ public function add(): void {
             return null;
         }
     }
-    public function getAccountByEmail(string $email): array|null {
+    public function getAccountByEmail(string $email): array|null|bool {
         try {
             $requete = "SELECT id_account, firstname, lastname, email, `password` FROM account
             WHERE email = ?";

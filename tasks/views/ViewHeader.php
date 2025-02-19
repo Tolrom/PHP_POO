@@ -1,7 +1,7 @@
 <?php
 class ViewHeader implements ViewInterface {
     //! Attributes
-    private string $nav;
+    private ?string $nav = '';
 
     //! Getters & Setters 
     /**
@@ -20,7 +20,7 @@ class ViewHeader implements ViewInterface {
      *
      * @return self
      */
-    public function setNav(string $nav): self {
+    public function setNav(?string $nav): self {
         $this->nav = $nav;
         return $this;
     }
@@ -40,9 +40,8 @@ class ViewHeader implements ViewInterface {
     <header>
         <nav>
             <ul>
-                <li><a href="#">Lien</a></li>
-                <li><a href="#">Lien</a></li>
-                <li><a href="#">Lien</a></li>
+                <li><a href="/php_poo/tasks/">Home</a></li>
+                <?= $this->getNav() ?>
             </ul>
         </nav>
     </header>

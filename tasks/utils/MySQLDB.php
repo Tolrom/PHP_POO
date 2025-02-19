@@ -5,7 +5,8 @@ class MySQLDB implements InterfaceDatabase {
         $dbname = $_ENV["DB_NAME"] ?? null;
         $username = $_ENV["DB_USER"] ?? null;
         $password = $_ENV["DB_PASS"] ?? null;
-        $dsn = "mysql:host={$host};port=3306;dbname={$dbname};charset=utf8mb4";
+        $port = $_ENV["DB_PORT"] ?? null;
+        $dsn = "mysql:host={$host};{$port}=3306;dbname={$dbname};charset=utf8mb4";
         try {
             return new \PDO(
                 $dsn,

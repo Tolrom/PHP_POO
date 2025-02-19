@@ -1,0 +1,12 @@
+# Activating URL rewriting
+RewriteEngine On
+
+# Project base (Location from server root)
+RewriteBase /php_poo/tasks
+
+# In case not a directory
+RewriteCond %{REQUEST_FILENAME} !-d
+
+# In case not a file
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^(.+)$ index.php [QSA,L]

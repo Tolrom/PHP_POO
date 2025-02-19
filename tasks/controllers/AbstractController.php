@@ -70,6 +70,12 @@ abstract class AbstractController {
     abstract public function render(): void;
 
     public function renderHeader(): void {
+        if(isset($_SESSION['email'])){
+            $this->getListViews()['header']->setNav('
+            <li><a href="/php_poo/tasks/profile">Profile</a></li>
+            <li><a href="/php_poo/tasks/logout">Log out</a></li>
+            ');
+        }
         $header = $this->getListViews()['header']->displayView();
         echo $header;
     }
