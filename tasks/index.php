@@ -7,19 +7,23 @@ include './controllers/AbstractController.php';
 include './controllers/AccountController.php';
 include './controllers/LogoutController.php';
 include './controllers/ProfileController.php';
+include './controllers/CategoryController.php';
+include './controllers/ErrorController.php';
 
 //? Views
 include './views/ViewHeader.php';
 include './views/ViewAccount.php';
 include './views/ViewFooter.php';
 include './views/ViewProfile.php';
+include './views/ViewError.php';
+include './views/ViewCategory.php';
 
 //? Other
 include 'config.php';
 
 loadEnv(__DIR__.'/.env');
 
-
+//! Controllers instantiation
 $home = new AccountController(
     ['account' => new AccountModel],
     [
@@ -37,6 +41,9 @@ new ProfileController(
     'profile' => new ViewProfile(),
     ]
 );
+$error = new ErrorController([], [new ViewError]);
+
+
 
 //      Analysing URL and returning components
 $url = parse_url($_SERVER['REQUEST_URI']);
