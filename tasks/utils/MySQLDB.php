@@ -1,14 +1,11 @@
 <?php
-include "./InterfaceDatabase.php";
 class MySQLDB implements InterfaceDatabase {
     public function connexion(): PDO {
         $host = $_ENV["DB_HOST"] ?? null;
         $dbname = $_ENV["DB_NAME"] ?? null;
         $username = $_ENV["DB_USER"] ?? null;
         $password = $_ENV["DB_PASS"] ?? null;
-        $dsn = "mysql:host=$host;
-                dbname=$dbname;
-                charset=utf8mb4";
+        $dsn = "mysql:host={$host};port=3306;dbname={$dbname};charset=utf8mb4";
         try {
             return new \PDO(
                 $dsn,
@@ -20,7 +17,7 @@ class MySQLDB implements InterfaceDatabase {
                 ]
             );
             
-        } catch (PDOException $e) {
+        } catch (\PDOException $e) {
             die("Erreur de connexion : " . $e->getMessage());
         }
     }

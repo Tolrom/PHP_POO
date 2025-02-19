@@ -1,6 +1,7 @@
 <?php
 require "./utils/InterfaceDatabase.php";
-abstract class AbstractModel {
+require "./utils/MySQLDB.php";
+abstract class AbstractModel extends MySQLDB {
 
     //! Properties
 
@@ -36,9 +37,9 @@ abstract class AbstractModel {
 
     //! Methods
 
-    abstract public function add(PDO $bdd, array $account ): void;
-    abstract public function update(PDO $bdd, array $account ): void;
-    abstract public function delete(PDO $bdd, array $account ): void;
-    abstract public function getAll(PDO $bdd ): ?array;
-    abstract public function getById(PDO $bdd, int $id): ?array;
+    abstract public function add(): void;
+    abstract public function update(array $newAccount): void;
+    abstract public function delete(): void;
+    abstract public function getAll(): ?array;
+    abstract public function getById(string $id): ?array;
 }

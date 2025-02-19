@@ -73,43 +73,96 @@ class AccountModel extends AbstractModel {
     //! Methods
 
 /**
- * @method Add an account to the database
- * @param PDO $bdd
- * @param array $account [firstname, lastname, email, password]
+ * @method Adds an account to the database
  * @return void
  */
-public function add(PDO $bdd, array $account): void {
+public function add(): void {
     try{
         $requete = "INSERT INTO account(firstname, lastname, email, `password`)
         VALUE(?,?,?,?)";
-        $req = $bdd->prepare($requete);
-        $req->bindParam(1,$account[0], PDO::PARAM_STR);
-        $req->bindParam(2,$account[1], PDO::PARAM_STR);
-        $req->bindParam(3,$account[2], PDO::PARAM_STR);
-        $req->bindParam(4,$account[3], PDO::PARAM_STR);
+        $req = $this->connexion()->prepare($requete);
+        $req->bindParam(1,$this->getAccount()[0], PDO::PARAM_STR);
+        $req->bindParam(2,$this->getAccount()[1], PDO::PARAM_STR);
+        $req->bindParam(3,$this->getAccount()[2], PDO::PARAM_STR);
+        $req->bindParam(4,$this->getAccount()[3], PDO::PARAM_STR);
         $req->execute();
     }
     catch(Exception $e) {
         echo "Erreur : " . $e->getMessage();
     }
 }
-    public function update(PDO $bdd, array $account): void {
-        //TODO
+
+    /**
+     * @method Edit an account in the database
+     * @return void
+     */
+    public function update(array $newAccount): void {
+        try {
+            $requete = "UPDATE account SET firstname=?, lastname=?, email=? 
+            WHERE email=?";
+            $req = $this->connexion()->prepare($requete);
+            $req->bindParam(1,$newAccount[0], PDO::PARAM_STR);
+            $req->bindParam(2,$newAccount[1], PDO::PARAM_STR);
+            $req->bindParam(3,$newAccount[2], PDO::PARAM_STR);
+            $req->bindParam(4,$this->getAccount()[2], PDO::PARAM_STR);
+            $req->execute();
+        } catch (Exception $e) {
+            echo "Erreur : " . $e->getMessage();
+        }
     }
-    public function delete(PDO $bdd, array $account): void {
-        //TODO
+    
+    /**
+     * @method Delete an account in the database
+     * @return void
+     */
+    public function delete(): void {
+        try{
+            $requete = "DELETE FROM account WHERE email=?";
+            $req = $this->connexion()->prepare($requete);
+            $req->bindParam(1,$this->getAccount()[2], PDO::PARAM_STR);
+            $req->execute();
+        } catch(Exception $e) {
+            echo "Erreur : " . $e->getMessage();
+        }
     }
-    public function getAll(PDO $bdd): array|null {
-        //TODO
-        return null ;
+    public function getAll(): ?array {
+        try {
+            $requete = "SELECT id_account, firstname, lastname, email FROM account";
+            $req = $this->connexion()->prepare($requete);
+            $req->execute();
+            $data = $req->fetchAll(PDO::FETCH_ASSOC);
+            return $data;
+        } catch (Exception $e) {
+            echo "Erreur : " . $e->getMessage();
+        }
     }
-    public function getById(PDO $bdd, int $id): array|null {
-        //TODO
-        return null ;
+    public function getById(string $id): ?array {
+        try {
+            $requete = "SELECT id_account, firstname, lastname, email, `password` FROM account
+            WHERE id_account = ?";
+            $req = $this->connexion()->prepare($requete);
+            $req->bindParam(1,$id, PDO::PARAM_STR);
+            $req->execute();
+            $data = $req->fetch(PDO::FETCH_ASSOC);
+            return $data;
+        } catch (Exception $e) {
+            echo "Erreur : " . $e->getMessage();
+            return null;
+        }
     }
-    public function getAccountByEmail(PDO $bdd, string $email): array|null {
-        //TODO
-        return null ;
+    public function getAccountByEmail(string $email): array|null {
+        try {
+            $requete = "SELECT id_account, firstname, lastname, email, `password` FROM account
+            WHERE email = ?";
+            $req = $this->connexion()->prepare($requete);
+            $req->bindParam(1,$email, PDO::PARAM_STR);
+            $req->execute();
+            $data = $req->fetch(PDO::FETCH_ASSOC);
+            return $data;
+        } catch (Exception $e) {
+            echo "Erreur : " . $e->getMessage();
+            return null;
+        }
     }
 
 }

@@ -16,7 +16,7 @@ abstract class AbstractController {
     private ?array $listViews;
 
     //! Constructor
-    public function __construct(?array $listModels, array $listViews) {
+    public function __construct(?array $listModels, ?array $listViews) {
         $this->listModels = $listModels;
         $this->listViews = $listViews;
     }
