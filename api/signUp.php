@@ -43,12 +43,8 @@ $data = json_decode($data);
 
 // Data validation
 if (!isset($data->username) || !isset($data->email) || !isset($data->password)) {
-    $message = 'Data missing : ';
-    $message .= !isset($data->username) ? 'Username ' : '';
-    $message .= !isset($data->email) ? 'Email ' : '';
-    $message .= !isset($data->password) ? 'Password ' : '';
     http_response_code(400);
-    echo json_encode(['message' => $message, 'code response' => 400]);
+    echo json_encode(['message' => 'Missing data', 'code response' => 400]);
     exit;
 }
 require 'models/userModel.php';

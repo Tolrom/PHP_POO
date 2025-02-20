@@ -48,7 +48,7 @@ This endpoint is used to register new users into the database, by sending JSON d
 **Code :** `400 Bad Request`
 ```json
 {
-  "message": "Data missing: Username Email Password",
+  "message": "Data missing",
   "code response": 400
 }
 ```
