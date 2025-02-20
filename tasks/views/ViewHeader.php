@@ -41,6 +41,7 @@ class ViewHeader implements ViewInterface {
         <nav>
             <ul>
                 <li><a href="/php_poo/tasks/">Home</a></li>
+                <li><a href="/php_poo/tasks/categories">Categories</a></li>
                 <?= $this->getNav() ?>
             </ul>
         </nav>

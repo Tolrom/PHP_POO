@@ -46,24 +46,24 @@ class AccountController extends AbstractController {
                         }
                     }
                     else {
-                        $message . '<li>Les mots de passe ne correspondent pas</li>';
+                        $message .= '<li>Les mots de passe ne correspondent pas</li>';
                     }
                 }
                 else {
                     if(!$uppercase){
-                        $message . '<li>Le mot de passe doit contenir une majuscule</li>';
+                        $message .= '<li>Le mot de passe doit contenir une majuscule</li>';
                     }
                     if(!$lowercase){
-                        $message . '<li>Le mot de passe doit contenir une minuscule</li>';
+                        $message .= '<li>Le mot de passe doit contenir une minuscule</li>';
                     }
                     if(!$number){
-                        $message . '<li>Le mot de passe doit contenir un chiffre</li>';
+                        $message .= '<li>Le mot de passe doit contenir un chiffre</li>';
                     }
                     if(!$specialChars){
-                        $message . '<li>Le mot de passe doit contenir un caractère spécial</li>';
+                        $message .= '<li>Le mot de passe doit contenir un caractère spécial</li>';
                     }
                     if(strlen($password) < 8){
-                        $message . '<li>Le mot de passe doit contenir au moins 8 caractères</li>';
+                        $message .= '<li>Le mot de passe doit contenir au moins 8 caractères</li>';
                     }
                 }
             }

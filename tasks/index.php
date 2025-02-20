@@ -32,16 +32,9 @@ $home = new AccountController(
         'home' => new ViewAccount()
 ]);
 $logout =   new LogoutController([],[]);
-$profile =  
-new ProfileController(
-[],
-[
-    'header'=>new ViewHeader(),
-    'footer'=> new ViewFooter(),
-    'profile' => new ViewProfile(),
-    ]
-);
-$error = new ErrorController([], [new ViewError]);
+$profile =  new ProfileController([],['header'=>new ViewHeader(),'footer'=> new ViewFooter(),'profile' => new ViewProfile()]);
+$error = new ErrorController([], ['header'=>new ViewHeader(), 'footer' => new ViewFooter(), 'error' => new ViewError]);
+$category = new CategoryController([],['header'=>new ViewHeader(), 'footer' => new ViewFooter() , 'cat' => new ViewCategory()]);
 
 
 
@@ -62,8 +55,11 @@ if (isset($_SESSION["pseudo"])) {
         case '/php_poo/tasks/logout':
             $logout->logout();
             break;
+        case '/php_poo/tasks/categories':
+            $category->render();
+            break;
         default:
-            $home->render();
+            $error->render();
             break;
     }
 }
@@ -74,7 +70,7 @@ else {
             $home->render();
             break;
         default:
-            $home->render();
+            $error->render();
             break;
     }
 }

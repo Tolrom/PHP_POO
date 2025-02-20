@@ -1,0 +1,22 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+form {
+    display: flex;
+    flex-direction: column;
+    gap: .5em;
+    margin: 1em;
+    align-items: center;
+}
+label {
+    display: flex;
+    flex-direction: column;
+}
+label input {
+    height: 1.5em;
+}
+button {
+    padding: .5em;
+}
