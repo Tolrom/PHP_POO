@@ -7,21 +7,23 @@
     <link rel="stylesheet" href="assets/style.css">
 </head>
 <body>
-    <form action="" method="post" id="signupForm" >
-        <label>
-            Username
-            <input type="text" name="username" >
-        </label>
-        <label>
-            Email
-            <input type="email" name="email" >
-        </label>
-        <label>
-            Password
-            <input type="password" name="password" >
-        </label>
-        <button type="submit">Sign up</button>
-    </form>
+    <section>
+        <form action="" method="post" id="signupForm" >
+            <label>
+                Username
+                <input type="text" name="username" >
+            </label>
+            <label>
+                Email
+                <input type="email" name="email" >
+            </label>
+            <label>
+                Password
+                <input type="password" name="password" >
+            </label>
+            <button type="submit">Sign up</button>
+        </form>
+    </section>
     <section>
         <h2>Users :</h2>
         <ul id="usersList"></ul>
@@ -44,7 +46,7 @@
             // console.log(formData, JSON.stringify(formData))
 
             try {
-                const response = await fetch('http://localhost/php_poo/api/signUp.php', {
+                const response = await fetch('http://localhost/php_poo/api/register', {
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json"
@@ -59,7 +61,7 @@
                 console.error("Signup error :", error);
             }
         });
-            fetch('http://localhost/php_poo/api/users.php', {
+            fetch('http://localhost/php_poo/api/users', {
                 method: "GET",
                 headers: {
                     "Content-Type": "application/json"

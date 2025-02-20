@@ -1,0 +1,8 @@
+RewriteEngine On
+
+# Redirect /register vers /register.php
+RewriteRule ^users$ users.php [L]
+
+# Redirect /users vers /users.php
+RewriteRule ^users$ users.php [L]
+

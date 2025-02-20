@@ -6,7 +6,7 @@ Exercices PHP orienté objet
 ## 1. Endpoint : User registering
 
 ### URL
-`POST /php_poo/api/signup.php`
+`POST /php_poo/api/register`
 
 ### Description
 This endpoint is used to register new users into the database, by sending JSON data.
@@ -67,7 +67,7 @@ This endpoint is used to register new users into the database, by sending JSON d
 ## 2. Endpoint : Users retrieving
 
 ### URL
-`GET /php_poo/api/users.php`
+`GET /php_poo/api/users`
 
 ### Description
 This endpoint returns every user from the database.
