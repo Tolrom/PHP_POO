@@ -22,6 +22,10 @@
         </label>
         <button type="submit">Sign up</button>
     </form>
+    <section>
+        <h2>Users :</h2>
+        <ul id="usersList"></ul>
+    </section>
     <script>
         document.querySelector('#signupForm').addEventListener('submit', async function(event) {
             event.preventDefault(); // Prevents the page from reloading
@@ -55,6 +59,24 @@
                 console.error("Signup error :", error);
             }
         });
+            fetch('http://localhost/php_poo/api/users.php', {
+                method: "GET",
+                headers: {
+                    "Content-Type": "application/json"
+                }
+            })
+            .then(response => response.json())
+            .then(data =>
+                data.body.forEach(user => {
+                    const list = document.querySelector('#usersList');
+                    const userElem = document.createElement('li');
+                    userElem.innerText = `
+                    User : ${user.username}
+                    Email : ${user.email}
+                    `;
+                    list.appendChild(userElem);
+                })
+            );
     </script>
 </body>
 </html>
