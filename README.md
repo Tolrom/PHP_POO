@@ -9,7 +9,7 @@ Exercices PHP orienté objet
 `POST /php_poo/api/signup.php`
 
 ### Description
-Cet endpoint permet d'inscrire un nouvel utilisateur en envoyant des données JSON.
+This endpoint is used to register new users into the database, by sending JSON data.
 
 ### Required Headers
 | Key                        | Value                   |
