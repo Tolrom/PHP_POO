@@ -48,7 +48,7 @@ This endpoint is used to register new users into the database, by sending JSON d
 **Code :** `400 Bad Request`
 ```json
 {
-  "message": "Data missing",
+  "message": "Missing data",
   "code response": 400
 }
 ```
@@ -57,7 +57,7 @@ This endpoint is used to register new users into the database, by sending JSON d
 **Code :** `405 Method Not Allowed`
 ```json
 {
-  "message": "Method non autorisée",
+  "message": "Unauthorized method",
   "code response": 405
 }
 ```
@@ -105,7 +105,7 @@ This endpoint returns every user from the database.
 **Code :** `405 Method Not Allowed`
 ```json
 {
-  "message": "Method non autorisée",
+  "message": "Unauthorized method",
   "code response": 405
 }
 ```
@@ -113,7 +113,7 @@ This endpoint returns every user from the database.
 ---
 
 ### Notes
-- Request must be `JSON`.
+- Request body has to be a `JSON`.
 - Make sure that `Content-Type` & `Access-Control-Allow-Origin` headers are set up.
 - Make sure the database is accessible, and has data.
 
